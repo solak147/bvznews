@@ -11,7 +11,12 @@ export default defineNuxtConfig({
     }
   },
 
-  css: ['@/assets/css/tailwind.css', '@/assets/css/main.less'],
+  css: [
+    '@/assets/css/tailwind.css',
+    '@/assets/css/main.less',
+    '@/assets/css/chart-min.js',
+    '@/assets/css/font-awesome-min.js'
+  ],
 
   typescript: {
     typeCheck: true
