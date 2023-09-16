@@ -1,13 +1,15 @@
 <template>
   <div>
     <NuxtLayout>
-      <template #headerNav>
-        <HeaderNav></HeaderNav>
+      <template #header>
+        <NavPC></NavPC>
       </template>
-      <main>
+
+      <div class="flex h-screen w-full flex-col overflow-y-hidden">
+        <HeaderCpt></HeaderCpt>
+        <NavMobile></NavMobile>
         <NuxtPage />
-      </main>
-      <template #footer></template>
+      </div>
     </NuxtLayout>
   </div>
 </template>
