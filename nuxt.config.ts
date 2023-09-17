@@ -2,6 +2,12 @@
 export default defineNuxtConfig({
   devtools: { enabled: false },
 
+  nitro: {
+    routeRules: {
+      '/api/**': { proxy: 'http://localhost:8080/**' }
+    }
+  },
+
   postcss: {
     plugins: {
       'postcss-import': {},

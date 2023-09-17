@@ -72,6 +72,7 @@
                 <button
                   class="mb-1 mr-1 w-full rounded bg-gray-800 px-6 py-3 text-sm font-bold uppercase text-white shadow outline-none transition-all duration-150 ease-linear hover:shadow-lg focus:outline-none active:bg-gray-600"
                   type="button"
+                  @click="login"
                 >
                   Sign In
                 </button>
@@ -91,3 +92,35 @@
     </div>
   </div>
 </template>
+
+<script setup>
+const props = defineProps({
+  callAlert: {
+    type: Function,
+    default: null
+  }
+})
+
+const token = useCookie('jwt-token')
+
+const loginModel = reactive({
+  account: '',
+  password: ''
+})
+
+const login = async () => {
+  const response = await useFetch('/login', {
+    method: 'post',
+    body: loginModel,
+    baseURL: '/api'
+  })
+
+  if (!response.error.value) {
+    token.value = response.data.value.data.token
+
+    navigateTo('/')
+  } else {
+    props.callAlert('error', response.error.value.data.msg)
+  }
+}
+</script>
