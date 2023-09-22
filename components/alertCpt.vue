@@ -1,7 +1,9 @@
 <template>
   <div
-    class="alert-animation relative bottom-4 flex justify-center"
-    :class="{ alertAnimationClose: closeAlert }"
+    class="absolute bottom-4 flex w-full justify-center opacity-0 transition-all duration-1000"
+    :class="{
+      '-translate-y-10 opacity-100': showAlert
+    }"
   >
     <div v-if="props.type === 'error'" class="alert alert-error w-2/3">
       <svg
@@ -83,15 +85,21 @@ const props = defineProps({
   message: {
     type: String,
     default: ''
+  },
+
+  showAlertObj: {
+    type: Object,
+    default: null
   }
 })
 
-const closeAlert = ref(false)
-onMounted(() => {
-  setTimeout(() => {
-    closeAlert.value = true
-  }, 3000)
+const showAlert = ref(false)
+// 只能監聽傳入參數為物件
+watch(props.showAlertObj, (newVal) => {
+  showAlert.value = newVal.data
 })
+
+onMounted(() => {})
 </script>
 
 <style lang="less" scoped>
