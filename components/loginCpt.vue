@@ -43,6 +43,7 @@
                   for="grid-password"
                   >Email</label
                 ><input
+                  v-model="loginModel.account"
                   type="email"
                   class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-gray-600 placeholder-gray-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
                   placeholder="Email"
@@ -54,6 +55,7 @@
                   for="grid-password"
                   >Password</label
                 ><input
+                  v-model="loginModel.password"
                   type="password"
                   class="w-full rounded border-0 bg-white px-3 py-3 text-sm text-gray-600 placeholder-gray-300 shadow transition-all duration-150 ease-linear focus:outline-none focus:ring"
                   placeholder="Password"
